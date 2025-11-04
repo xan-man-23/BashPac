@@ -36,5 +36,33 @@ mapBuild=("-------------------------------------------------------",
           "| * * * * * * * * * * * * * * * * * * * * * * * * * * |",
           "-------------------------------------------------------")
 
-# use loop to build map
 
+buildMap(){
+  for i in mapBuild; do 
+    echo "$i"
+
+  done
+
+}
+
+moveUp(){
+
+}
+
+moveDown(){
+
+}
+
+moveLeft(){
+
+}
+
+moveRight(){
+
+}
+
+warp(){
+
+}
+
+buildMap
