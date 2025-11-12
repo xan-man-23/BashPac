@@ -1,4 +1,4 @@
-bnormalPac="C"
+normalPac="C"
 eatingPac="c"
 wall1="|"
 wall2="-"
@@ -44,11 +44,14 @@ mapBuild=("-------------------------------------------------------"
 
 
 buildMap(){
-  postitionPac="${mapBuild[16][27]}"
+  postitionPac="${mapBuild[16]}"
 
   for ((i = 0; i < 25; i++)); do 
     echo "${mapBuild[i]}"
+
   done
+  return postitionPac
+
 
 }
 
@@ -59,17 +62,21 @@ moveUp(){
 }
 
 moveLeft(){
-  posX -= 1;
+  if [[mapBuild[i] != wall1 && mapbuild[i] != wall2]]; then
+    posX -= 1;
 
 }
 
 moveRight(){
+  if [[mapBuild[i] != wall1 && mapbuild[i] != wall2]]; then
   posX += 1;
 
 }
 
 moveDown(){
+  if [[mapBuild[i] != wall1 && mapbuild[i] != wall2]]; then
   posY -= 1;
+
 }
 
 buildMap
@@ -95,5 +102,25 @@ arrowRight(){
 arrowDown(){
   if [[shiftDown]]; then
     moveDown
+
+}
+playGame(){
+
+ if [[shiftUP]]; then
+    arrowUp
+    newPac=$buildMap
+
+  elif [[shiftLeft]]; then
+    arrowLeft
+    buildMap
+
+  elif [[shiftDown]]; then
+    arrowDown
+    buildMap
+
+  elif [[shiftRight]]; then
+    arrowRight
+    buildMap
+
 
 }
