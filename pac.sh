@@ -19,6 +19,9 @@ shiftUP= "A"
 shiftDown="B"
 shiftLeft="D"
 shiftRight="C"
+yes="Yes"
+no="No"
+quit="Q"
 
 mapBuild=("-------------------------------------------------------"
           "| * * * * * * * * * * * * * | * * * * * * * * * * * * |"
@@ -44,83 +47,75 @@ mapBuild=("-------------------------------------------------------"
 
 
 buildMap(){
-  postitionPac="${mapBuild[16]}"
 
   for ((i = 0; i < 25; i++)); do 
     echo "${mapBuild[i]}"
-
   done
-  return postitionPac
-
 
 }
 
 moveUp(){
   if [[mapBuild[i] != wall1 && mapbuild[i] != wall2]]; then
     posY += 1;
+  fi
 
 }
 
 moveLeft(){
   if [[mapBuild[i] != wall1 && mapbuild[i] != wall2]]; then
     posX -= 1;
+  fi
 
 }
 
 moveRight(){
   if [[mapBuild[i] != wall1 && mapbuild[i] != wall2]]; then
   posX += 1;
+  fi
 
 }
 
 moveDown(){
   if [[mapBuild[i] != wall1 && mapbuild[i] != wall2]]; then
   posY -= 1;
+  fi
 
 }
 
-buildMap
 
 arrowUp(){
   if [[shiftUP]]; then
-  moveUp
+    moveUp
+  fi
 
 }
 
 arrowLeft(){
   if [[shiftLeft]]; then
     moveLeft
+  fi
 
 }
 
 arrowRight(){
   if [[shiftRight]]; then
     moveRight
+  fi
 
 }
 
 arrowDown(){
   if [[shiftDown]]; then
     moveDown
+  fi
 
 }
+
 playGame(){
-
- if [[shiftUP]]; then
-    arrowUp
-    newPac=$buildMap
-
-  elif [[shiftLeft]]; then
-    arrowLeft
+  echo -n "Start Game? "
+  if [[shiftRight]]; then
     buildMap
-
-  elif [[shiftDown]]; then
-    arrowDown
-    buildMap
-
-  elif [[shiftRight]]; then
-    arrowRight
-    buildMap
-
-
+  fi
 }
+
+playGame
